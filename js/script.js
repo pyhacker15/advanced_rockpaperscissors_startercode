@@ -14,26 +14,44 @@
         // Display the user winner to the output screen 
         // Clear the input box for the next choice
 
-/* Returns a random integer between a and b, inclusive. */
-function randomInt(a, b) {
-  if (!(Number.isInteger(a) && Number.isInteger(b))) {
-    throw "a and b must both be integers";
-  } else if (b < a) {
-    throw "b must be greater than or equal to a";
-  }
-  return a + Math.floor(Math.random() * (b+1-a));
-}
+
 
 // *************************** YOUR CODE BELOW *******************************
 //******************TEST EARLY AND OFTEN USING console.log() ******************
 //****************** SERIOUSLY TEST USING console.log()!!! ******************
 
 //GLOBAL VARIABLES
-
+// Declare four global variables for intial state of the list of choices, the computer choice, the user choice, and the winner.
+let  winner;
+let  userChoice = $("#usersInput").val();
+const playerChoices = ["paper", "rock", "scissors"];
+let computerChoice = (Math.floor(Math.random() * playerChoices.length));
 
 //FUNCTIONS
-
-
+ if (userChoice == playerChoices[0] && computerChoice == playerChoices[1] || userChoice == playerChoices[0] && computerChoice == playerChoices[2]) { 
+    $("#winnerOutput").html("Computer Wins!");
+    
+}  else if (userChoice == playerChoices[1] && computerChoice == playerChoices[2] || userChoice == playerChoices[1] && computerChoice == playerChoices[0]) { 
+    $("#winnerOutput").html("User Wins!");
+    
+} else { 
+   $("#winnerOutput").html("It's a Tie");
+} 
 
 // DOCUMENT READY FUNCTION
+// Create your document ready function. 
+        // Create a click hander for when the "Shoot!" button is clicked, takes in the user choice from the input field, 
+        // Display the user choice to the output screen
+document.ready(function() { 
+    $("#shoot").click(function() { 
+        $("#userChoice").append($("#usersInput").val());
+    }); 
+});
+
+
+
+
+
+
+
 
